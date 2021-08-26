@@ -5,10 +5,10 @@ RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 RUN sed -i -e "s/;\?daemonize\s*=\s*yes/daemonize = no/g" /etc/php/7.2/fpm/php-fpm.conf
 RUN echo "\nclear_env = no" >> /etc/php/7.2/fpm/pool.d/www.conf
 #COPY FILE
-COPY . /var/www/html/
+COPY sosial-media/ /var/www/html/
 # Nginx config
 RUN rm /etc/nginx/sites-enabled/default
-ADD ./pesbuk.conf /etc/nginx/sites-available/
+ADD sosial-media/pesbuk.conf /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/pesbuk.conf /etc/nginx/sites-enabled/pesbuk.conf
 # Expose ports.
 EXPOSE 80
